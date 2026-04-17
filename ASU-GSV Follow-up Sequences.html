@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ASU-GSV Reception Follow-up Sequences</title>
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --rule: #e5e5e5;
+    --accent: #2b5f47;
+    --bg: #fafaf8;
+    --card: #ffffff;
+    --tag: #f3f3ef;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    margin: 0;
+    line-height: 1.55;
+    font-size: 16px;
+  }
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+  header.top {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+  }
+  h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); font-size: 14px; margin: 0; }
+  h2 {
+    font-size: 22px;
+    margin: 56px 0 6px;
+    padding-top: 20px;
+    border-top: 2px solid var(--ink);
+    letter-spacing: -0.01em;
+  }
+  h3 {
+    font-size: 17px;
+    margin: 32px 0 8px;
+    color: var(--accent);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  h4 {
+    font-size: 15px;
+    margin: 24px 0 6px;
+    font-weight: 700;
+  }
+  p { margin: 0 0 12px; }
+  a { color: var(--accent); }
+  .meta {
+    background: var(--tag);
+    border-radius: 8px;
+    padding: 16px 18px;
+    font-size: 14px;
+    color: var(--muted);
+    margin: 16px 0 24px;
+  }
+  .meta strong { color: var(--ink); }
+  .toc {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 24px 0 36px;
+  }
+  .toc h2 {
+    margin: 0 0 10px;
+    padding: 0;
+    border: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  .toc ul { margin: 0; padding-left: 18px; }
+  .toc li { margin: 4px 0; font-size: 14px; }
+  .counts {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 18px 0 28px;
+    font-size: 14px;
+  }
+  .counts th, .counts td {
+    border-bottom: 1px solid var(--rule);
+    padding: 10px 12px;
+    text-align: left;
+  }
+  .counts th {
+    background: var(--tag);
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+  .audience-note {
+    border-left: 3px solid var(--accent);
+    padding: 4px 0 4px 14px;
+    color: var(--muted);
+    font-size: 14px;
+    margin: 14px 0 28px;
+  }
+  .step {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 14px 0;
+  }
+  .step .hdr {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .step .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 700;
+  }
+  .step .day {
+    font-size: 12px;
+    color: var(--muted);
+    background: var(--tag);
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+  .step .subject {
+    font-weight: 600;
+    font-size: 15px;
+    margin: 6px 0 12px;
+  }
+  .step .body {
+    white-space: pre-wrap;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .track {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 22px 26px;
+    margin: 20px 0 28px;
+  }
+  .track h4.trackname {
+    margin: 0 0 4px;
+    font-size: 16px;
+  }
+  .track .trackmeta {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0 0 18px;
+  }
+  .linkedin .label { color: #0a66c2; }
+  .feedback {
+    margin-top: 18px;
+    padding: 14px 16px;
+    background: var(--tag);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .feedback strong { color: var(--ink); }
+  @media print {
+    body { background: #fff; font-size: 12.5px; }
+    .wrap { max-width: 100%; padding: 20px; }
+    .toc { display: none; }
+    .step, .track { page-break-inside: avoid; break-inside: avoid; }
+    h2 { page-break-before: always; }
+    h2:first-of-type { page-break-before: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <h1>ASU-GSV Reception Follow-up Sequences</h1>
+  <p class="sub">Draft copy for stakeholder review. Prepared for Reply deployment across Jennifer, Mike R, and Randi.</p>
+</header>
+
+<div class="meta">
+  <p><strong>Event:</strong> School Day reception at ASU-GSV (April 2026)</p>
+  <p><strong>Reference material:</strong> <a href="https://www.schoolday.com/schoolday-unveils-a-fundamentally-new-approach-to-k-12-data-privacy-and-launches-school-data-sovereignty-alliance/">School Day press release (Data Sovereignty Alliance launch)</a></p>
+  <p><strong>Primary goal of every sequence:</strong> book a 30-minute follow-up call.</p>
+  <p><strong>Placeholders:</strong> <code>{{first_name}}</code>, <code>{{company}}</code>, <code>[Insert press release hyperlink here]</code>, <code>[BOOKING LINK]</code> (Randi has a real link. Mike R and Jennifer are pending.)</p>
+  <p><strong>Cadence (email-only):</strong> Day 1, Day 4, Day 10, Day 18</p>
+  <p><strong>Cadence (email + LinkedIn):</strong> Email Day 1, LI DM Day 3, Email Day 7, LI DM Day 12, Email Day 21</p>
+</div>
+
+<table class="counts">
+  <thead><tr><th>Rep</th><th>Audience</th><th>Tracks produced</th><th>Attended</th><th>Did not attend</th><th>With LinkedIn</th></tr></thead>
+  <tbody>
+    <tr><td>Jennifer</td><td>K-12 admins</td><td>Email-only (no LinkedIn account on Reply)</td><td>9</td><td>12</td><td>8</td></tr>
+    <tr><td>Mike R</td><td>EdTech vendors</td><td>Email-only and Email + LinkedIn</td><td>13</td><td>10</td><td>15</td></tr>
+    <tr><td>Randi</td><td>K-12 admins</td><td>Email-only and Email + LinkedIn</td><td>1</td><td>3</td><td>2</td></tr>
+  </tbody>
+</table>
+
+<div class="toc">
+  <h2>Jump to</h2>
+  <ul>
+    <li><a href="#jennifer">Jennifer (schools, email only)</a></li>
+    <li><a href="#randi-email">Randi (schools, email only)</a></li>
+    <li><a href="#randi-combo">Randi (schools, email + LinkedIn)</a></li>
+    <li><a href="#miker-email">Mike R (vendors, email only)</a></li>
+    <li><a href="#miker-combo">Mike R (vendors, email + LinkedIn)</a></li>
+  </ul>
+</div>
+
+<!-- JENNIFER -->
+<h2 id="jennifer">Jennifer, Schools, Email only</h2>
+<p class="audience-note">21 K-12 admins: principals, superintendents, CTOs, instructional leaders. Pain points we lean on: district sprawl across 800+ apps, fragmented DPAs, AI pressure. Social proof: Alliance founding districts (Boston Public, Bakersfield, Rocklin).</p>
+
+<div class="track">
+  <h4 class="trackname">Track A: Attended (9 contacts)</h4>
+  <p class="trackmeta">Warmth opener, reference to the room. Press release link gets included in email 1.</p>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 1</span><span class="day">Day 1</span></div>
+    <div class="subject">Subject: Great meeting you at ASU-GSV</div>
+    <div class="body">Hi {{first_name}},
+
+Really enjoyed connecting at the School Day reception. Glad you made it out.
+
+In case some of it got lost in the conference noise, here is what we unveiled. A new approach to K-12 data privacy with three pieces. Discover gives a real inventory of every app touching your student data (the average district is running 800 plus). Enforce handles policy through PII tokenization, with the district holding the reversal keys. Validate produces immutable audit logs. We also launched the School Data Sovereignty Alliance alongside Boston Public, Bakersfield, Rocklin, and nine other founding districts.
+
+Full write up here: [Insert press release hyperlink here]
+
+Any chance I could grab 30 minutes to walk you through what this would look like at {{company}}? [BOOKING LINK]
+
+Thanks,</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 2</span><span class="day">Day 4</span></div>
+    <div class="subject">Subject: One thing I probably undersold</div>
+    <div class="body">Hi {{first_name}},
+
+Following up on my note from earlier this week.
+
+The piece that is hard to explain at a reception is what the tokenization actually does in practice. Teachers keep using the apps they already use, but those apps never receive the actual student PII. IT holds the reversal keys. Most districts I talk to assume that tradeoff does not exist, that you either lock things down and frustrate teachers, or you open them up and inherit the risk.
+
+Nikolas Crapo at Bakersfield put it well. It lets IT manage the guardrails and take them off the teachers.
+
+If a 30 minute walkthrough would be useful, here is my calendar: [BOOKING LINK]</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 3</span><span class="day">Day 10</span></div>
+    <div class="subject">Subject: Founding district window</div>
+    <div class="body">Hi {{first_name}},
+
+Short one. The Data Sovereignty Alliance has 12 founding districts as of launch, with Boston Public leading. The founding cohort is the group that shapes the policy framework. Districts who join later inherit it.
+
+I think {{company}} would be a strong voice in that room. Happy to explain how it works on a short call: [BOOKING LINK]</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 4 (breakup)</span><span class="day">Day 18</span></div>
+    <div class="subject">Subject: Closing the loop</div>
+    <div class="body">Hi {{first_name}},
+
+I do not want to keep filling your inbox. If the timing is not right I understand. Is there a better person at {{company}} I should be reaching out to, or would you rather I circle back in the fall?
+
+Either reply is fine.</div>
+  </div>
+</div>
+
+<div class="track">
+  <h4 class="trackname">Track B: Did not attend (12 contacts)</h4>
+  <p class="trackmeta">Acknowledges RSVP, positions follow up as value add ("let me show you what you missed").</p>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 1</span><span class="day">Day 1</span></div>
+    <div class="subject">Subject: Sorry we missed you at ASU-GSV</div>
+    <div class="body">Hi {{first_name}},
+
+Thanks for RSVPing to our reception. Sorry we did not get to connect in person. I know how that week goes.
+
+Since you raised your hand for it, I want to make sure you get the highlights. We unveiled a new approach to K-12 data privacy. Discover every app touching student data, enforce policy with PII tokenization, validate with immutable audit logs. We also launched the School Data Sovereignty Alliance with Boston Public, Bakersfield, Rocklin, and nine other founding districts.
+
+Press release: [Insert press release hyperlink here]
+
+I would still love to walk you through what you missed. 30 minutes: [BOOKING LINK]</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 2</span><span class="day">Day 4</span></div>
+    <div class="subject">Subject: Hard to explain in a press release</div>
+    <div class="body">Hi {{first_name}},
+
+The reason I would rather show you this on a call than send more links is that the tokenization piece sounds abstract in writing. In a demo it clicks fast.
+
+Short version: teachers keep the apps they already use, the apps never touch raw PII, and IT holds the reversal keys. Breach surface drops without you pulling tools away from classrooms. The audit trail piece makes FERPA and COPPA posture a lot easier to defend, too.
+
+If 20 minutes works anywhere on your calendar: [BOOKING LINK]</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 3</span><span class="day">Day 10</span></div>
+    <div class="subject">Subject: Founding member window</div>
+    <div class="body">Hi {{first_name}},
+
+One more thing worth flagging since you RSVP'd. The Alliance is still accepting founding districts. The founding group shapes the framework. Everyone after them inherits it.
+
+Even if the product conversation is for later, the Alliance piece should not wait. Worth 20 minutes on its own? [BOOKING LINK]</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 4 (breakup)</span><span class="day">Day 18</span></div>
+    <div class="subject">Subject: Should I try again in the fall?</div>
+    <div class="body">Hi {{first_name}},
+
+Going to stop here. If this is not the right time, or I am in the wrong inbox at {{company}}, a one line reply is all I need. Either "not now" or a better contact to try.</div>
+  </div>
+</div>
+
+<div class="feedback"><strong>Stakeholder feedback on Jennifer's sequences:</strong> leave comments here or inline.</div>
+
+<!-- RANDI EMAIL ONLY -->
+<h2 id="randi-email">Randi, Schools, Email only</h2>
+<p class="audience-note">4 K-12 admins. Same audience as Jennifer's, so the framing mirrors hers. Copy is reworded so the two reps do not send identical text. Use this track for contacts without a LinkedIn URL (Andrea and Amy). Matt has LinkedIn so use the combined track below for him. Maritza has LinkedIn so use the combined track for her.</p>
+
+<div class="track">
+  <h4 class="trackname">Track A: Attended (1 contact: Matt Conner)</h4>
+  <p class="trackmeta">Note on file: "Randi spoke with him." Treating as a light warm conversation at the event, not a deep intro.</p>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 1</span><span class="day">Day 1</span></div>
+    <div class="subject">Subject: Good meeting you at ASU-GSV</div>
+    <div class="body">Hi {{first_name}},
+
+Thanks for coming out to the School Day reception. It was good to finally put a face to the name.
+
+In case the details got lost in everything else going on that week, here is what we announced. A new K-12 data privacy platform with three parts: Discover, Enforce, Validate. It is built around PII tokenization where the district holds the keys. We also launched the School Data Sovereignty Alliance with Boston Public, Bakersfield, Rocklin, and nine other founding districts.
+
+Press release here: [Insert press release hyperlink here]
+
+Could I grab 30 minutes to show you what this would look like at {{company}}? [BOOKING LINK]</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 2</span><span class="day">Day 4</span></div>
+    <div class="subject">Subject: One more thing from ASU-GSV</div>
+    <div class="body">Hi {{first_name}},
+
+Quick follow up. The detail that matters most for a district like {{company}} is this: the tokenization layer lets teachers keep using the tools they already use, and those tools never touch raw PII. Keys stay with IT.
+
+Nikolas Crapo at Bakersfield said it better than I can. It lets IT manage the guardrails and take them off the teachers.
+
+Any chance you have 30 minutes? [BOOKING LINK]</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 3</span><span class="day">Day 10</span></div>
+    <div class="subject">Subject: Founding district cohort</div>
+    <div class="body">Hi {{first_name}},
+
+Flagging this because the Alliance piece matters on its own. We are at 12 founding districts, Boston is leading, and it is still open. The founding group is the one that shapes the framework.
+
+I would love to get {{company}} into that conversation. Short call to walk through it: [BOOKING LINK]</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 4 (breakup)</span><span class="day">Day 18</span></div>
+    <div class="subject">Subject: Last ping</div>
+    <div class="body">Hi {{first_name}},
+
+I will stop filling your inbox here. If there is a better contact at {{company}} or a better time to reach back out, let me know. Otherwise I will check in later in the year.</div>
+  </div>
+</div>
+
+<div class="track">
+  <h4 class="trackname">Track B: Did not attend (3 contacts: Maritza, Andrea, Amy)</h4>
+  <p class="trackmeta">Andrea and Amy have no LinkedIn so use this track as is. Maritza has LinkedIn so use the combined track below.</p>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 1</span><span class="day">Day 1</span></div>
+    <div class="subject">Subject: We missed you at ASU-GSV</div>
+    <div class="body">Hi {{first_name}},
+
+Thanks for RSVPing to our reception. Sorry we did not get to connect. That week gets eaten alive fast, I know how it is.
+
+You raised your hand, so I want to make sure you get the recap. We launched a new approach to K-12 data privacy. Three parts: Discover, Enforce, Validate. All built around PII tokenization where the district holds the keys. Alongside that, the School Data Sovereignty Alliance launched with Boston Public, Bakersfield, Rocklin, and nine other founding districts.
+
+Full release: [Insert press release hyperlink here]
+
+Would love to walk you through what you missed. 30 minutes: [BOOKING LINK]</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 2</span><span class="day">Day 4</span></div>
+    <div class="subject">Subject: The short version</div>
+    <div class="body">Hi {{first_name}},
+
+Condensing the pitch. The tokenization layer means apps handling student data never see raw PII. The district holds the reversal keys. Teachers keep their tools, breach surface drops, and the audit logs make FERPA and COPPA a lot easier to defend.
+
+Worth 20 minutes to see what this would look like at {{company}}? [BOOKING LINK]</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 3</span><span class="day">Day 10</span></div>
+    <div class="subject">Subject: Founding cohort still open</div>
+    <div class="body">Hi {{first_name}},
+
+Since you were interested enough to RSVP, flagging: the Alliance is still open to founding districts. Founding members shape the framework that later adopters inherit.
+
+Even if the product side is timing wise off for {{company}}, the Alliance piece is worth 20 minutes on its own. [BOOKING LINK]</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 4 (breakup)</span><span class="day">Day 18</span></div>
+    <div class="subject">Subject: Closing out</div>
+    <div class="body">Hi {{first_name}},
+
+Not going to keep pushing. If this is not the right time or I am in the wrong inbox at {{company}}, just reply and I will adjust. Otherwise I will circle back later in the year.</div>
+  </div>
+</div>
+
+<!-- RANDI COMBO -->
+<h2 id="randi-combo">Randi, Schools, Email + LinkedIn</h2>
+<p class="audience-note">For contacts with LinkedIn URLs: Matt Conner (attended) and Maritza Koeppen (did not attend). Email steps reuse the Randi email only copy above. LinkedIn DMs are short, plain, first person.</p>
+
+<div class="track">
+  <h4 class="trackname">Track A: Attended (Matt Conner)</h4>
+  <p class="trackmeta">Email 1, 2, and final breakup = same as Randi email only / Track A. LinkedIn DMs slot in at Day 3 and Day 12.</p>
+
+  <div class="step linkedin">
+    <div class="hdr"><span class="label">LinkedIn DM 1</span><span class="day">Day 3</span></div>
+    <div class="body">Hey {{first_name}}, Randi from School Day. Good meeting you at ASU-GSV. Sent a note to your email a couple days ago with the recap and my calendar. Didn't want it to get buried. Worth a short call this month?</div>
+  </div>
+
+  <div class="step linkedin">
+    <div class="hdr"><span class="label">LinkedIn DM 2</span><span class="day">Day 12</span></div>
+    <div class="body">Hey {{first_name}}, one more here in case email is not the spot. The Data Sovereignty Alliance founding cohort is still open. {{company}} would be a good voice in that room. If a short call works: [BOOKING LINK]</div>
+  </div>
+</div>
+
+<div class="track">
+  <h4 class="trackname">Track B: Did not attend (Maritza Koeppen)</h4>
+  <p class="trackmeta">Email 1, 2, and final breakup = same as Randi email only / Track B.</p>
+
+  <div class="step linkedin">
+    <div class="hdr"><span class="label">LinkedIn DM 1</span><span class="day">Day 3</span></div>
+    <div class="body">Hey {{first_name}}, Randi from School Day. Saw you RSVP'd for our ASU-GSV reception but we did not get to connect. I dropped a recap in your email. Happy to walk you through what you missed if a short call works.</div>
+  </div>
+
+  <div class="step linkedin">
+    <div class="hdr"><span class="label">LinkedIn DM 2</span><span class="day">Day 12</span></div>
+    <div class="body">Hey {{first_name}}, circling back here. The Alliance founding cohort is still open and {{company}} would be a strong voice in it. 20 minutes? [BOOKING LINK]</div>
+  </div>
+</div>
+
+<div class="feedback"><strong>Stakeholder feedback on Randi's sequences:</strong> leave comments here or inline.</div>
+
+<!-- MIKE R EMAIL ONLY -->
+<h2 id="miker-email">Mike R, Vendors, Email only</h2>
+<p class="audience-note">23 EdTech vendor contacts: CEOs, founders, CROs, product leads. Framing is different from schools. Primary CTA is a call about using School Day with the schools they serve. The Alliance is a secondary mention. Social proof that lands hardest with vendors: Vonage (Ericsson) as strategic corporate partner, plus the 12 founding districts as a buying signal.</p>
+
+<div class="track">
+  <h4 class="trackname">Track A: Attended (13 contacts)</h4>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 1</span><span class="day">Day 1</span></div>
+    <div class="subject">Subject: Good seeing you at ASU-GSV</div>
+    <div class="body">Hi {{first_name}},
+
+Thanks for making it out to our reception. Good to have {{company}} in the room.
+
+What we unveiled is going to matter for {{company}} even if the Alliance piece is not your thing. Districts are about to get real governance tools over the 800 plus apps they run. School Day sits between the district and the vendor, with tokenization in the middle and district held keys, so a district can say yes to {{company}} without inheriting raw PII risk.
+
+For you, that means faster procurement, shorter DPA cycles, and a cleaner story when a district asks how you handle AI training data.
+
+Worth 30 minutes to walk through where {{company}} fits and what integration looks like? [BOOKING LINK]
+
+Press release if you want the full announcement: [Insert press release hyperlink here]</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 2</span><span class="day">Day 4</span></div>
+    <div class="subject">Subject: Where {{company}} plugs in</div>
+    <div class="body">Hi {{first_name}},
+
+Following up. The conversation I actually want to have is not about the Alliance (though you are welcome there). It is about how {{company}} shows up inside the districts that are running School Day.
+
+Short version: we broker the data relationship between districts and the apps they adopt. Vendors who integrate early get a faster path through IT review and better positioning when districts shortlist tools.
+
+30 minutes to see if it maps to your roadmap? [BOOKING LINK]</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 3</span><span class="day">Day 10</span></div>
+    <div class="subject">Subject: Vonage plus 12 founding districts</div>
+    <div class="body">Hi {{first_name}},
+
+One proof point worth flagging. Vonage (Ericsson) came in as strategic corporate partner at launch, alongside 12 founding districts led by Boston Public. Bakersfield and Rocklin are publicly named.
+
+Districts inside the Alliance are going to prefer vendors who plug into this framework. Not mandatory yet, but the direction is pretty clear, and {{company}} being on the right side of that early is cheap insurance.
+
+[BOOKING LINK]</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 4 (breakup)</span><span class="day">Day 18</span></div>
+    <div class="subject">Subject: Last note</div>
+    <div class="body">Hi {{first_name}},
+
+If the timing is off, or I am in the wrong inbox at {{company}}, point me to the right person and I will stop filling this one. Either reply works.</div>
+  </div>
+</div>
+
+<div class="track">
+  <h4 class="trackname">Track B: Did not attend (10 contacts)</h4>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 1</span><span class="day">Day 1</span></div>
+    <div class="subject">Subject: Sorry we missed you at ASU-GSV</div>
+    <div class="body">Hi {{first_name}},
+
+Thanks for the RSVP. Sorry we did not get to connect at the reception.
+
+Since you raised your hand, here is what you missed and why it matters for {{company}}. We unveiled a new K-12 data privacy platform (Discover, Enforce, Validate) built around PII tokenization where the district holds the keys. We launched the School Data Sovereignty Alliance with Boston Public plus 11 other founding districts, and Vonage (Ericsson) came in as strategic corporate partner.
+
+For a vendor like {{company}}, this changes the procurement and DPA motion inside every district that adopts it. Vendors who plug in early get a cleaner path through IT review.
+
+Full release: [Insert press release hyperlink here]
+
+I would rather walk you through what you missed directly. 30 minutes: [BOOKING LINK]</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 2</span><span class="day">Day 4</span></div>
+    <div class="subject">Subject: The vendor angle</div>
+    <div class="body">Hi {{first_name}},
+
+The press release frames this for districts, but the vendor side matters just as much.
+
+When a district routes student data through School Day's tokenization layer, apps like {{company}} receive tokens instead of raw PII. That is the difference between saying yes and saying no to AI features, analytics, and model training without inheriting the compliance tail. DPA negotiations also get a lot shorter.
+
+Worth 30 minutes to see how it maps to {{company}}'s roadmap? [BOOKING LINK]</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 3</span><span class="day">Day 10</span></div>
+    <div class="subject">Subject: Districts moving on this</div>
+    <div class="body">Hi {{first_name}},
+
+Even if the RSVP was more curiosity than intent, flagging: the Alliance is moving fast. 12 founding districts, Boston leading, Vonage (Ericsson) as corporate partner, Bakersfield and Rocklin publicly on the record.
+
+Districts inside the Alliance will prefer vendors who integrate with the framework. Getting on the radar early is cheap. Waiting is not.
+
+[BOOKING LINK]</div>
+  </div>
+
+  <div class="step">
+    <div class="hdr"><span class="label">Email 4 (breakup)</span><span class="day">Day 18</span></div>
+    <div class="subject">Subject: Should I close the loop?</div>
+    <div class="body">Hi {{first_name}},
+
+If this is not the right time or I am in the wrong inbox at {{company}}, just reply and I will adjust. Otherwise I will check back later in the year.</div>
+  </div>
+</div>
+
+<!-- MIKE R COMBO -->
+<h2 id="miker-combo">Mike R, Vendors, Email + LinkedIn</h2>
+<p class="audience-note">Use this track for vendor contacts with LinkedIn URLs in the contact sheet (15 of 23). For the 8 without LinkedIn, use the email only track above. Email 1, 2, and final breakup = same as the email only track. LinkedIn DMs slot in at Day 3 and Day 12.</p>
+
+<div class="track">
+  <h4 class="trackname">Track A: Attended</h4>
+
+  <div class="step linkedin">
+    <div class="hdr"><span class="label">LinkedIn DM 1</span><span class="day">Day 3</span></div>
+    <div class="body">Hey {{first_name}}, Mike from School Day. Good meeting you at the reception at ASU-GSV. Dropped a note to your email earlier this week on where {{company}} could fit with School Day. Didn't want it to get buried. Worth a quick call this month?</div>
+  </div>
+
+  <div class="step linkedin">
+    <div class="hdr"><span class="label">LinkedIn DM 2</span><span class="day">Day 12</span></div>
+    <div class="body">One more ping in case email is not the channel. Vonage came in as strategic partner at launch and the founding district cohort is closing out. Would love 30 minutes to walk you through where {{company}} fits: [BOOKING LINK]</div>
+  </div>
+</div>
+
+<div class="track">
+  <h4 class="trackname">Track B: Did not attend</h4>
+
+  <div class="step linkedin">
+    <div class="hdr"><span class="label">LinkedIn DM 1</span><span class="day">Day 3</span></div>
+    <div class="body">Hey {{first_name}}, Mike from School Day. Saw you RSVP'd for our reception at ASU-GSV but we did not get to connect. Sent you a recap by email. Short version: there is a tokenization layer that could change how {{company}} moves through district IT reviews. Worth a quick call?</div>
+  </div>
+
+  <div class="step linkedin">
+    <div class="hdr"><span class="label">LinkedIn DM 2</span><span class="day">Day 12</span></div>
+    <div class="body">Circling back. The vendor angle on this platform is the part I would most want to walk you through. Tokenization shifts what {{company}} has to negotiate with district IT. 30 minutes: [BOOKING LINK]</div>
+  </div>
+</div>
+
+<div class="feedback"><strong>Stakeholder feedback on Mike R's sequences:</strong> leave comments here or inline.</div>
+
+</div>
+</body>
+</html>
